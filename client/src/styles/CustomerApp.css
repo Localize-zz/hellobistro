@@ -1,0 +1,108 @@
+.CustomerApp {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.sidebar-left {
+  flex: 0;
+  min-width: 280px;
+  max-width: 280px;
+  background:white;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.24);
+  z-index: 1;
+
+}
+
+main {
+  flex: 1;
+  background: #ECEFF1;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+  padding-top: 20px;
+  min-height: 100vh;
+
+}
+
+
+.card {
+  /* flex: 0 0 24%; */
+  margin: 10px;
+  padding: 20px;
+  background: white;
+  flex: 1 0 24%;
+  min-width: 300px;
+  max-width: 350px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.small-screen-customer {
+  display: none;
+  background: #4CAF50;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+
+.collapsed {
+  display: none;
+}
+
+.expanded {
+  display: inherit;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 20px;
+}
+
+.menu li:hover {
+  background: #FFFFFF;
+}
+
+@media (max-width: 540px) {
+  .DashBoard {
+    flex-direction: column;
+  }
+
+  .sidebar-left {
+    display: none;
+  }
+
+  .small-screen-customer {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    color: white;
+  }
+  
+}
+
+.sidebar-left .material-icons {
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.sidebar-left li {
+  display: flex;
+  align-content: center;
+}
+
+.page-header {
+  font-size: 24px;
+  flex: 1 1 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+

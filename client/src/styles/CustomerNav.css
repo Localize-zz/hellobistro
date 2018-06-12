@@ -1,0 +1,38 @@
+
+.CustomerNav li {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.CustomerNav a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.CustomerNav .material-icons {
+  vertical-align: -25%;
+}
+
+.menu-control {
+  display: none;
+}
+
+@media (max-width: 540px) {
+  .menu-control {
+    display: inline-block;
+  }
+
+  .sidebar-left {
+    display: none;
+  }
+
+  .small-screen-customer {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    color: white;
+  }
+  
+}

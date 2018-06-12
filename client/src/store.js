@@ -1,18 +1,21 @@
-import { createStore, compose} from 'redux';
+import { createStore } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { browserHistory } from 'react-router';
+import { createBrowserHistory } from 'history';
+import rootReducer from './reducers/index';
+import { saveState, loadState } from './services/LocalStorage.js';
 
-import {testReducer} from './reducers/index'
+const persistedState = loadState();
+const store = createStore(
+  rootReducer,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
-
-const defaultState = {
-  
-}
-
-//const store = createStore(rootReducer, defaultState);
-const store = createStore(testReducer, defaultState);
-
-export const history = {} //syncHistoryWithStore(browserHistory, store);
+export const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 export default store;

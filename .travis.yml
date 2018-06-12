@@ -1,0 +1,34 @@
+language: node_js
+node_js:
+- '8'
+cache:
+  directories:
+  - node_modules
+  - client/node_modules
+before_deploy:
+- zip -r latestTravis * >/dev/null
+- mkdir -p s3_upload
+- mv latestTravis.zip s3_upload/latestTravis.zip
+deploy:
+- provider: s3
+  access_key_id: AKIAJCJAYVNNLSK32QWA
+  secret_access_key: &1
+    secure: 0FJr1p1wuMSO5pMuivBOYhWWxBaj6JQc+VT0OlVBgHCECvRV/wko35VqT6o5XhckLiyJC5oXv3Y++4NE/DOTTQBl0nxqFoa7+nNtENmqXhdnHjMsV6arwf6UlRpFv9NdWXMhEBxi4zLV1xKsGvp+1Kl+O25rrLl8uIRI5lOyVOs+VxucW+G8f0kG9SoB+CaYNrFXuuug76vYq19KWl2MsoaXnnvhL+Fh3HHnUuAj7IfEn5LwIvNgTOWlhb3fmTUYlCVbne9QHAf5dgMhxHyLPNN/RJToq7um/RZtcNuTLw9gBMqidjBFXQSVrun46bW4UI7dvl9nEDp5mHOrCV8k/hNSIZQnQYdTPl9voBFAeWiBff8XXI+lMXa+HlBLs7wttYLb/rRfwgKK/1dSRjV7QEKNGPqxNRCgiGZlMGlphyB9pRp9N6d7d3CkvGZoIaDBsRdjTW4dDbWIpmarxr+j2spK04Re1JDs0Ss3+E46PRhVSePoLEgIZoKgiMdubmDmZbJ6rzbgc0VTKdTOZOwUtBe13qvwHeBin4vrpEQlr3hiNjhtM3RoGsYoUFuGkjLB5/BBX29yddg0R+EWUfOWp0i6LJ0ZuPofJ31yV5Uwt9ZOzZswY912uyfawdWbvfb4OQf0g6l8cCst9ApZKmPHL6uxLx7vJU/wLKMju/Uuu3g=
+  local_dir: s3_upload
+  skip_cleanup: true
+  on: &2
+    repo: hellobistro/hellobistro
+    branch: master
+  bucket: hellostorage
+  wait-until-deployed: true
+- provider: codedeploy
+  access_key_id: AKIAJCJAYVNNLSK32QWA
+  secret_access_key: *1
+  bucket: hellostorage
+  key: latestTravis.zip
+  bundle_type: zip
+  application: hellobistro
+  deployment_group: hellodeploy
+  region: us-west-2
+  wait-until-deployed: true
+  on: *2

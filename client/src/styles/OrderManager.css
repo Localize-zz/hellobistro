@@ -1,0 +1,8 @@
+.order-manager-item {
+  margin: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+}

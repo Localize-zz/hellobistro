@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const DataTypes = require('sequelize/lib/data-types');
+
 const {
   database,
   username,
@@ -7,14 +9,16 @@ const {
   port,
 } = require('../config/config.js');
 
-const seed = require('../sampleData');
-
 const sequelize = new Sequelize(database, username, password, {
   host,
   port,
   dialect: 'mysql',
   operatorsAliases: false,
   logging: false,
+  pool: { maxConnections: 5, maxIdleTime: 15 },
+  dialectOptions: {
+    requestTimeout: 5000,
+  },
 });
 
 const Restaurant = sequelize.define('Restaurant', {
@@ -59,6 +63,8 @@ const Restaurant = sequelize.define('Restaurant', {
   },
   type: Sequelize.STRING,
   paymentId: Sequelize.STRING,
+  latitude: DataTypes.DECIMAL(10, 8),
+  longitude: DataTypes.DECIMAL(11, 8),
 });
 
 const MenuItem = sequelize.define('MenuItem', {
@@ -66,8 +72,9 @@ const MenuItem = sequelize.define('MenuItem', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  description: Sequelize.STRING,
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     allowNull: false,
   },
   vegan: Sequelize.BOOLEAN,
@@ -76,7 +83,15 @@ const MenuItem = sequelize.define('MenuItem', {
   spicy: Sequelize.BOOLEAN,
   image: Sequelize.STRING,
   prepTime: Sequelize.INTEGER,
-  rating: Sequelize.INTEGER,
+  rating: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1,
+  },
+  status: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: 'draft',
+  },
 });
 
 const MenuSection = sequelize.define('MenuSection', {
@@ -89,7 +104,7 @@ const MenuSection = sequelize.define('MenuSection', {
 
 const Order = sequelize.define('Order', {
   status: Sequelize.STRING,
-  total: Sequelize.INTEGER,
+  total: Sequelize.FLOAT,
   completedAt: Sequelize.DATE,
   transactionId: Sequelize.STRING,
   table: Sequelize.STRING,
@@ -97,7 +112,8 @@ const Order = sequelize.define('Order', {
 
 const OrderItem = sequelize.define('OrderItem', {
   special: Sequelize.STRING,
-  price: Sequelize.INTEGER,
+  price: Sequelize.FLOAT,
+  quantity: Sequelize.INTEGER,
 });
 
 const RestaurantUser = sequelize.define('RestaurantUser', {
@@ -148,7 +164,43 @@ const Customer = sequelize.define('Customer', {
 });
 
 const CustomerRating = sequelize.define('CustomerRating', {
-  total: Sequelize.INTEGER,
+  total: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  },
+});
+
+const PaymentMethods = sequelize.define('PaymentMethod', {
+  cardId: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+  },
+  zip: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  brand: Sequelize.STRING,
+  country: Sequelize.STRING,
+  exp_month: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  exp_year: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  last4: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  default: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  description: {
+    type: Sequelize.STRING,
+  },
 });
 
 RestaurantUser.belongsTo(Restaurant);
@@ -175,8 +227,10 @@ MenuItem.belongsToMany(Order, { through: 'OrderItem' });
 Customer.belongsToMany(MenuItem, { through: 'CustomerRating' });
 MenuItem.belongsToMany(Customer, { through: 'CustomerRating' });
 
+PaymentMethods.belongsTo(Customer);
+Customer.hasMany(PaymentMethods);
 
-// /// USE THIS TO SEED DB ///////
+/// USE THIS TO SEED DB ///////
 
 // sequelize.sync({ force: true, logging: console.log }).then(async () => {
 //   await Restaurant.bulkCreate(seed.sampleRestaurants);
@@ -190,9 +244,9 @@ MenuItem.belongsToMany(Customer, { through: 'CustomerRating' });
 // })
 // .catch((error) => {
 //   console.log("error in sequelize sync:", error);
-// })
+// });
 
-// /////////////////////////////
+/////////////////////////////
 
 module.exports = {
   Restaurant,
@@ -203,4 +257,5 @@ module.exports = {
   OrderItem,
   Customer,
   CustomerRating,
+  PaymentMethods,
 };

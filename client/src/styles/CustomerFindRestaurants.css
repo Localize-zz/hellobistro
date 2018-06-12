@@ -1,0 +1,70 @@
+#header{
+  margin: 35px 0 10px 10px;
+}
+
+#sub-header{
+  margin: 10px;
+  margin-bottom: 30px;
+}
+.restaurant-snippet {
+  padding: 20px;
+  border-radius: 3px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  margin: 50px 10px 20px 30px;
+}
+.restaurant-snippet:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24), 0px 0px 1px 1px #85898d;
+}
+
+.restaurant-snippet-header {
+  background-image: linear-gradient(60deg, #2196f3, #5fb2f6);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+  border-radius: 3px;
+  margin: -40px 0 0 0;
+  padding: 10px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.restaurant-snippet-header h3, 
+.restaurant-snippet-header p {
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+
+.restaurant-snippet-header h3 {
+  text-shadow: 1px 1px rgba(0,0,0,.14);
+}
+.restaurant-snippet-header p {
+  display: inline-block;
+}
+
+.restaurant-snippet-body {
+  padding: 10px;
+  
+}
+
+.restaurant-snippet-body .restaurant-genre {
+  font-size: 14px;
+  color: slategray;
+
+}
+.restaurant-snippet-body .restaurant-description {
+  margin-top: 10px;
+  
+}
+
+.gps {
+  padding-top: 5px;
+  float: right;
+} 
+
+.icon-gps {
+  color: #ffffff;
+  vertical-align: -5px;
+  margin-right: 5px;
+}

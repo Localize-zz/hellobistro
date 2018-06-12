@@ -1,0 +1,86 @@
+.payment-methods {
+  padding: 20px;
+  font-family: Camphor,Open Sans,system-ui,sans-serif;
+}
+
+.payment-list {
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  margin: 0 10px 10px 0;
+  max-width: 600px;
+}
+
+.payment-item {
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 8px;
+}
+
+.delete-card {
+  margin-left: 10px;
+  vertical-align: -50%;
+  height: 0px;
+  width: 0px;
+}
+
+.delete-card:hover {
+  cursor: pointer;
+}
+
+/* .payment-item:hover .delete-card {
+  visibility: visible;
+  transform: translate(5px, 0);
+  transition-property: all;
+  transition-duration: 800ms;
+  height: 10px;
+  width: 10px;
+} */
+
+.card-icon {
+  height: 1.25em;
+  vertical-align: -32%;
+}
+
+.card-expiration {
+  display: inline-flex;
+  float: right;
+}
+
+@media all and (max-width: 430px) {
+  .card-expiration-tag {
+    visibility: hidden;
+  }
+}
+  
+
+.add-payment {
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  margin: 0 10px 10px 0;
+  max-width: 600px;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(54, 244, 162, .4);
+  color: #fff;
+  margin:  0 10px 20px 0;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+}
+
+.add-button .material-icons {
+  color: #fff;
+  vertical-align: -30%;
+  margin-right: 5px;
+}

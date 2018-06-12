@@ -35,3 +35,18 @@ ESLint has already been setup and configured. Please make sure that you have run
 6. After restarting Sublime Text, you should see linting errors appear in-editor.
 
 *Note: You may see that some SublimeLinter setups require setting paths inside the SublimeLinter settings. Since you are installing ESLint as a dev dependency in this project, that is not needed. 
+
+### Running Tests
+
+#### Server-side tests
+
+1. In the root directory , run `npm run test-server`.
+2. Depending on your Mocha configuration, you may need to manually exit Mocha (CTRL + C) after the tests have completed.
+
+#### Client tests
+
+[Forthcoming]
+
+#### Deploying
+Set upstream to https://github.com/hellobistro/hellobistro.git and push to upstream master (must have admin priviliges). This will trigger testing and deployment via Travis CI.
+

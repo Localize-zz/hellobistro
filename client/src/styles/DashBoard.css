@@ -1,0 +1,8 @@
+.DashBoard {
+  flex: 1;
+  background: #ECEFF1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}

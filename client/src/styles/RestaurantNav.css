@@ -1,0 +1,56 @@
+.RestaurantNav li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+li.link-log-out:hover {
+  background-color: rgba(211, 211, 211, 0.358);
+}
+
+a:not(.activeLink) li:hover {
+  background-color: rgba(211, 211, 211, 0.358);
+}
+
+.activeLink li {
+  background-color: #c75b39;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px #c75b39;
+  color: #fff;
+}
+
+.RestaurantNav a {
+  text-decoration: inherit;
+  color: black;
+}
+
+.RestaurantNav i {
+  vertical-align: -25%;
+}
+
+.RestaurantNav .menu-control {
+  display: none;
+}
+
+
+@media (max-width: 540px) {
+  .RestaurantNav .menu-control {
+    display: inherit;
+  }
+
+  .RestaurantNav .sidebar-left {
+    display: none;
+  }
+
+  .small-screen-restaurant {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    color: white;
+  }
+  
+}

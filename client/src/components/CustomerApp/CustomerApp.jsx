@@ -1,12 +1,25 @@
 // Import dependencies
 import React from 'react';
-import { Route } from 'react-router-dom';
-
-
-import CustomerLogin from './CustomerLogin';
-import FindRestaurants from './FindRestaurants';
-import Orders from './Orders';
-
+import { Route, Link, Switch } from 'react-router-dom';
+// Import components
+import CustomerNav from './CustomerNav';
+import {
+  FindRestaurantsContainer,
+  FavoritesContainer,
+  OrderHistoryContainer,
+  OrderContainer,
+  CustomerSettingsContainer,
+  MenuContainer,
+  ConfirmOrderContainer,
+  PaymentMethodsContainer,
+  CustomerNavContainer,
+  MastContainer,
+  NotificationsContainer,
+} from '../Containers';
+// Import Services
+import AuthService from '../../services/AuthService';
+// Import CSS
+import '../../styles/CustomerApp.css';
 
 // Create parent application
 class CustomerApp extends React.Component {
@@ -15,18 +28,35 @@ class CustomerApp extends React.Component {
     this.state = {};
   }
 
+  logout() {
+    AuthService.logout();
+    this.props.history.replace('/');
+  }
+
   render() {
     return (
-      <div className="CustomerApp DebugComponentRed">
-        <p>This is the <strong>CustomerApp</strong> component</p>
-        <Route path="/" component={CustomerLogin} />
-        <Route path="/" component={FindRestaurants} />
-        <Route path="/" component={Orders} />
-        <p>Remaining components to implement under CustomerApp:</p>
-        <ul>
-          <li>Register</li>
-          <li>Settings</li>
-        </ul>
+      <div className="CustomerApp">
+        <NotificationsContainer />
+        <div className="sidebar-left">
+          <MastContainer />
+          <CustomerNav {...this.props} />
+        </div>
+        <main>
+          <div className="small-screen-customer">
+            <MastContainer />
+            <CustomerNavContainer small {...this.props} />
+          </div>
+          <Switch>
+            <Route path="/customer/home/findRestaurants" component={FindRestaurantsContainer} />
+            <Route path="/customer/home/history" component={OrderHistoryContainer} />
+            <Route path="/customer/home/order" component={OrderContainer} />
+            <Route path="/customer/home/settings" component={CustomerSettingsContainer} />
+            <Route path="/customer/home/favorites" component={FavoritesContainer} />
+            <Route path="/customer/home/:id/menu" component={MenuContainer} />
+            <Route path="/customer/home/confirm-order" component={ConfirmOrderContainer} />
+            <Route path="/customer/home/payment" component={PaymentMethodsContainer} />
+          </Switch>
+        </main>
       </div>
     );
   }

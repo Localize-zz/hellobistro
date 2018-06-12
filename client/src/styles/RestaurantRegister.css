@@ -1,0 +1,54 @@
+.mock-form {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.form-section {
+  font-size: 18px;
+  margin: 10px 0px 30px 0px;
+  text-align: left;
+}
+
+input[type="text"].form-input, input[type="password"].form-input, textarea.form-input {
+  -webkit-appearance:none;
+  -moz-appearance: none; 
+  -ms-appearance: none;
+  padding: 10px 0px;
+  margin: 0px 0px 10px 0px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid darkslategray;
+  color: darkslategray;
+  font-weight: 400;
+  font-size: 18px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 14px;
+  padding: 5px 0px;
+  color: darkslategray;
+  display: block;
+}
+
+
+.form-section-header {
+  color: darkslategray;
+  padding: 10px 0px;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+
+.label-description {
+  color: lightslategrey;
+  font-style: italic;
+}
+
+.form-input-txtarea::placeholder {
+  color: lightslategrey; 
+  font-style: italic; 
+}

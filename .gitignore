@@ -1,5 +1,5 @@
 # Build files
-client/dist/*
+client/dist/bundle.js
 client/.DS_Store
 client/node_modules
 

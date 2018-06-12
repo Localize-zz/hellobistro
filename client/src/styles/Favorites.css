@@ -1,0 +1,43 @@
+#header{
+  margin: 35px 0 10px 10px;
+}
+
+#sub-header{
+  margin: 10px;
+  margin-bottom: 30px;
+}
+.FavoritesIndividualItem {
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+  margin: 0 10px 20px 10px;
+}
+.restaurant-snippet:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24), 0px 0px 1px 1px #4CAF50;
+}
+
+.drool {
+  display: inline-block;
+  transform: scale(.8);
+}
+
+.drool-bounce {
+  animation: pulse 500ms infinite;
+  display: inline-block;
+  transform: scale(.8);
+}
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(.8);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(.8);
+  }
+}

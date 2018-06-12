@@ -1,0 +1,129 @@
+.CustomerLogin {
+  margin-top: 0;
+}
+
+.customer-login-mast {
+  font-family: 'Bitter', serif;
+  font-size: 28px;
+  text-align: center;
+  padding: 50px;
+  background: #4CAF50;
+  color: white;
+  margin-bottom: 0;
+}
+
+.background {
+  background-image: url('../img/bg-spreads/dsc_9739.jpg');
+  background-size: cover;
+  margin-top: 0;
+  min-height: 500px;
+  overflow: auto;
+}
+
+.customer-login-form {
+  padding: 20px;
+  display: block;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  min-height: 50vh;
+  background-color: #fffffff0;
+  border-radius: 3px;
+}
+
+.customer-login-form-section {
+  font-size: 18px;
+  margin: 10px 0px 30px 0px;
+  text-align: left;
+}
+
+input[type="text"].form-input, input[type="password"].form-input {
+  -webkit-appearance:none;
+  -moz-appearance: none; 
+  -ms-appearance: none;
+  padding: 10px 0px;
+  margin: 0px 0px 10px 0px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid darkslategray;
+  color: darkslategray;
+  font-weight: 400;
+  font-size: 18px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 14px;
+  padding: 5px 0px;
+  color: darkslategray;
+  display: block;
+}
+
+
+.form-section-header {
+  color: darkslategray;
+  padding: 10px 0px;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+
+.switch-restaurant {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  color: #c75b39;
+  font-family: 'Bitter', serif;
+  /* font-size: 10px; */
+  text-align: center;
+}
+
+
+.switch-restaurant a {
+  text-decoration: inherit;
+  color: #c75b39;
+  display: flex;
+  align-items: center;
+}
+
+.switch-restaurant i {
+  margin-right: 10px;
+}
+
+.login-button {
+  background-color: #4CAF50;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(54, 244, 162, .4);
+  color: #fff;
+  margin: 10px 20px 10px 0;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+}
+
+.register-button {
+  background-color: #c75b39;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
+  color: #fff;
+  margin: auto;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.24);
+}
